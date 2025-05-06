@@ -1,20 +1,20 @@
--- Carga packer.nvim
+-- Loads packer.nvim
 vim.cmd [[packadd packer.nvim]]
 
 require('packer').startup(function(use)
-  -- Packer se puede actualizar a sí mismo
+  -- Packer can update itself 
   use 'wbthomason/packer.nvim'
 
-  -- nvim-treesitter con post-install/update hook para TSUpdate
+  -- nvim-treesitter with post-install/update hook for TSUpdate
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
 
-  -- Aquí puedes agregar más plugins
+  -- Here I can add more plugins... 
 end)
 
--- Configuración de nvim-treesitter
+-- nvim-treesitter config:
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "c", "lua", "vim", "python", "go", "javascript" },
   sync_install = false,
