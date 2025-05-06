@@ -1,7 +1,20 @@
-vim.cmd [[call plug#begin('~/.config/nvim/plugged')]]
-vim.cmd [[Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}]]
-vim.cmd [[call plug#end()]]
+-- Carga packer.nvim
+vim.cmd [[packadd packer.nvim]]
 
+require('packer').startup(function(use)
+  -- Packer se puede actualizar a sí mismo
+  use 'wbthomason/packer.nvim'
+
+  -- nvim-treesitter con post-install/update hook para TSUpdate
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+
+  -- Aquí puedes agregar más plugins
+end)
+
+-- Configuración de nvim-treesitter
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "c", "lua", "vim", "python", "go", "javascript" },
   sync_install = false,
